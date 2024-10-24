@@ -7,17 +7,26 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #fff;
     }
     #countdown {
-      font-size: 48px;
-      color: #333;
+      font-size: 40px;
+      color: white;
+      background-color: red;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <h1>Countdown to October 24, 2024 (New York Time)</h1>
+
   <div id="countdown"></div>
 
   <script>
@@ -30,16 +39,18 @@
       const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+      const milliseconds = Math.floor((timeRemaining % 1000));
 
       document.getElementById("countdown").innerHTML = 
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s " + milliseconds + "ms";
 
       if (timeRemaining < 0) {
         document.getElementById("countdown").innerHTML = "Time's up!";
       }
     }
 
-    setInterval(countdown, 1000);
+    setInterval(countdown, 1);  // Update every millisecond
   </script>
+
 </body>
 </html>
